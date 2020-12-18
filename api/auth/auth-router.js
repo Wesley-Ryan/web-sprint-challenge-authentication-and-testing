@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const Helper = require("../helper-model");
 const tokenCreator = require("./tokenCreator");
 const {
@@ -22,7 +21,7 @@ router.post(
           console.log(usr);
           res.status(201).json(usr);
         })
-        .catch((error) => res.status(500).json("username taken"));
+        .catch(() => res.status(500).json("username taken"));
     } else {
       res.status(400).json({ message: "invalid credentials" });
     }

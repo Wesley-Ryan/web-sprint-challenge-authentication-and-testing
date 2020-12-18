@@ -1,8 +1,9 @@
 // do not make changes to this file
-const router = require('express').Router();
-const jokes = require('./jokes-data');
+const router = require("express").Router();
+const { validator } = require("../middleware/validation-middleware");
+const jokes = require("./jokes-data");
 
-router.get('/', (req, res) => {
+router.get("/", validator, (req, res) => {
   res.status(200).json(jokes);
 });
 

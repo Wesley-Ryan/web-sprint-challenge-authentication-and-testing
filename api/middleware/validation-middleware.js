@@ -28,12 +28,12 @@ const validateUsernameUnique = async (req, res, next) => {
 const validator = (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
-    res.status(401).json("You must be logged in to view this page.");
+    res.status(401).json("token required");
   } else {
     console.log(token);
     jwt.verify(token, secret, (error, decoded) => {
       if (error) {
-        res.status(401).json(error.message);
+        res.status(401).json("invalid token");
       } else {
         req.decodedToken = decoded;
         next();
