@@ -30,7 +30,6 @@ const validator = (req, res, next) => {
   if (!token) {
     res.status(401).json("token required");
   } else {
-    console.log(token);
     jwt.verify(token, secret, (error, decoded) => {
       if (error) {
         res.status(401).json("invalid token");

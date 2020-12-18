@@ -18,7 +18,6 @@ router.post(
       req.User.password = hash;
       Helper.create(req.User)
         .then((usr) => {
-          console.log(usr);
           res.status(201).json(usr);
         })
         .catch(() => res.status(500).json("username taken"));
